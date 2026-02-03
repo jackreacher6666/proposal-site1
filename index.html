@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Girlfriend? 💕😍</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #45a049;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        #no:hover {
+            background-color: #da190b;
+        }
+        #reason {
+            font-size: 1.3em;
+            text-align: center;
+            margin-top: 20px;
+            color: #ff69b4;
+            display: none;
+        }
+        #celebration {
+            display: none;
+            text-align: center;
+            font-size: 1.5em;
+            color: #ff69b4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Girlfriend? 💕😍🌹</h1>
+    <p>I've been thinking about you a lot, and I can't imagine my life without you. Will you say yes? ❤️✨</p>
+    <div class="buttons">
+        <button id="yes">Yes! 💖</button>
+        <button id="no">No 😢</button>
+    </div>
+    <div id="reason"></div>
+    <div id="celebration">
+        <h2>Yay! You said yes! 💕🎉</h2>
+        <p>I'm the luckiest person ever. Let's make some amazing memories together! 😘🌟</p>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const reasonDiv = document.getElementById('reason');
+        const celebration = document.getElementById('celebration');
+
+        // Array of 20 reasons with emojis
+        const reasons = [
+            "1. Because you're the most amazing person I've ever met! 😍💖",
+            "2. Life is better with you by my side—let's adventure together! 🌍🤝",
+            "3. Your smile lights up my world every day! ☀️😊",
+            "4. We have so much fun laughing and talking! 😂💬",
+            "5. You're my favorite person to share secrets with! 🤫❤️",
+            "6. Together, we can create unforgettable memories! 📸✨",
+            "7. You make me want to be a better version of myself! 🌟💪",
+            "8. Your kindness and heart are truly one-of-a-kind! 💕🕊️",
+            "9. Let's dance through life hand-in-hand! 💃🕺",
+            "10. You're my dream come true—say yes and make it real! 💭😘",
+            "11. With you, every day feels like a holiday! 🎄🎉",
+            "12. Your hugs are the best medicine! 🤗💊",
+            "13. We complement each other perfectly! 🧩❤️",
+            "14. Let's build a future full of love and joy! 🏠💑",
+            "15. You're my sunshine on cloudy days! ☁️🌞",
+            "16. I promise endless support and love! 🤝💖",
+            "17. Your laugh is my favorite sound! 😂🎶",
+            "18. Together, we're unstoppable! 🚀💥",
+            "19. You inspire me to chase my dreams! 🌠😊",
+            "20. Because I love you more than words can say—please say yes! 💌😍"
+        ];
+
+        let reasonIndex = 0;
+
+        // Function to move the "No" button to a random position
+        function moveNoButton() {
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+
+        // Handle "No" click: move button and show next reason
+        noButton.addEventListener('click', function() {
+            moveNoButton();
+            if (reasonIndex < reasons.length) {
+                reasonDiv.textContent = reasons[reasonIndex];
+                reasonDiv.style.display = 'block';
+                reasonIndex++;
+            } else {
+                // After 20 reasons, loop back or show a final message
+                reasonDiv.textContent = "Okay, you've seen all the reasons—now click Yes! 😜💕";
+            }
+        });
+
+        // Handle "Yes" click
+        yesButton.addEventListener('click', function() {
+            // Hide buttons and reason, show celebration
+            document.querySelector('.buttons').style.display = 'none';
+            reasonDiv.style.display = 'none';
+            celebration.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
